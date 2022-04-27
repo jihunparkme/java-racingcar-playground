@@ -11,4 +11,14 @@ public class Car {
 
         this.name = name;
     }
+
+    public void forward(int num) {
+        if (num >= 4) {
+            this.location += "-";
+        }
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
 }

@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -26,5 +25,25 @@ public class CarTest {
         Cars cars = new Cars("pobi,crong,honux");
         List<Car> carList = cars.getCarList();
         assertThat(carList.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("0에서 9 사이 random 값이 4이상일 경우 전진")
+    void forward_if_0_to_9() {
+        Car car = new Car("aaron");
+        car.forward(4);
+        assertThat(car.getLocation()).isEqualTo("--");
+        car.forward(9);
+        assertThat(car.getLocation()).isEqualTo("---");
+    }
+
+    @Test
+    @DisplayName("0에서 9 사이 random 값이 4미만일 경우")
+    void forward_if_not_0_to_9() {
+        Car car = new Car("aaron");
+        car.forward(0);
+        assertThat(car.getLocation()).isEqualTo("-");
+        car.forward(3);
+        assertThat(car.getLocation()).isEqualTo("-");
     }
 }
