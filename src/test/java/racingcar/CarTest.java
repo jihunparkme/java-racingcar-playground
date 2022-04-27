@@ -46,4 +46,14 @@ public class CarTest {
         car.forward(3);
         assertThat(car.getLocation()).isEqualTo("-");
     }
+
+    @Test
+    @DisplayName("우승자는 한 명")
+    void only_one_winner() {
+        Cars cars = new Cars("pobi,crong,honux");
+        cars.getCarList().get(0).forward(5);
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).contains("pobi");
+    }
 }
