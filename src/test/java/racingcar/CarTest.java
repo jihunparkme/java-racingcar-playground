@@ -56,4 +56,15 @@ public class CarTest {
         List<String> winners = cars.getWinners();
         assertThat(winners).contains("pobi");
     }
+
+    @Test
+    @DisplayName("우승자가 한 명 이상")
+    void more_than_one_winner() {
+        Cars cars = new Cars("pobi,crong,honux");
+        cars.getCarList().get(0).forward(5);
+        cars.getCarList().get(2).forward(5);
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).contains("pobi", "honux");
+    }
 }
